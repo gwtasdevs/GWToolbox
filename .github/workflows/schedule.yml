@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Check for latest release
         id: check
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TAG=$(gh api repos/gwdevhub/GWToolboxpp/releases/latest --jq .tag_name)
           echo "Latest upstream release tag: $TAG"
