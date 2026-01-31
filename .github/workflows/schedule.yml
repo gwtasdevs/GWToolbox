@@ -41,6 +41,12 @@ jobs:
           curl -OL https://raw.githubusercontent.com/gwdevhub/GWToolboxpp/${{ steps.check.outputs.tag }}/Dependencies/GWCA/bin/gwca.dll
           cargo run
 
+      - name: Create tag
+        if: steps.check.outputs.run != 'false'
+        run: |
+          git tag ${{ steps.check.outputs.tag }}
+          git push origin ${{ steps.check.outputs.tag }}
+
       - name: Publish modified gwca.dll to github
         if: steps.check.outputs.run != 'false'
         uses: softprops/action-gh-release@v2
