@@ -35,6 +35,7 @@ jobs:
         if: steps.check.outputs.run != 'false'
         run: |
           curl -OL https://raw.githubusercontent.com/gwdevhub/GWToolboxpp/${{ steps.check.outputs.tag }}/Dependencies/GWCA/bin/gwca.dll
+          ls
           cargo run
 
       - name: Publish modified gwca.dll to github
