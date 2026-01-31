@@ -21,7 +21,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
       for i in file_offset..file_offset+1000 {
         let bytes = &data[i..i+9];
         if bytes == scan_code {
-          data[i+7] = 0xE8; // change JZ to JMP
+          data[i+7] = 0xEB; // change JZ to JMP
 
           let mut file = fs::OpenOptions::new()
             .write(true)
